@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Email Validation</title>
+		<style type="text/css">
+			#container{
+				width: 970px;
+				margin: 0px auto;
+				padding: 10px;
+			}
+			form{
+				margin-left: 370px;
+			}
+			.error{
+				background-color: red;
+				color: white;
+				display: inline-block;
+				font-size: 60px;
+				padding: 20px;
+				border: 2px solid black;
+				margin-left: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<form action="/create" method="post">
+				<label>Email:</label>
+				<input type="text" name="email">
+				<input type="submit">
+			</form>
+			{% with messages = get_flashed_messages( with_categories = true ) %}
+				{% if messages %}
+					<ul class="flashes">
+						{% for category, message in messages %}
+							<li class="{{ category }}">{{ message }}</li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+			{% endwith %}
+		</div>
+	</body>
+</html>

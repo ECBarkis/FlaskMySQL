@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Email Validation</title>
+		<style type="text/css">
+			#container{
+				width: 970px;
+				margin: 0px auto;
+				padding: 10px;
+			}
+			h2{
+				background-color: green;
+				display: inline-block;
+				margin-left: 300px;
+				padding: 20px;
+				border: 2px solid black;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<h2>The email address you entered ({{ email[ 0 ].email }})<br>is a VALID email address! Thank you!</h2>
+			<table>
+				<tr>
+					<th><h1><u>Email Addresses Entered</u></h1></th>
+				</tr>
+				{% for email in all_emails %}
+				<tr>
+					<td><h3>{{ email[ 'email' ] }}</h3></td>
+					<td><h3>{{ email[ 'created_at' ].strftime( '%m/%d/%y %I:%M%p' )  }}</h3></td>
+					<td>
+						<form action="/delete/{{ email[ 'id' ] }}" method="post">
+							<input type="submit" value="Delete">
+						</form>
+					</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</body>
+</html>
