@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Login and Registration</title>
+		<style type="text/css">
+			#container{
+				width: 970px;
+				margin: 0px auto;
+				padding: 20px;
+			}
+			#registration, #login{
+				width: 400px;
+				display: inline-block;
+				vertical-align: top;
+			}
+			#registration{
+				border-right: 1px solid black;
+			}
+			#login{
+				margin-left: 80px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<div id="registration">
+				<h1>Registration</h1>
+				<form action="/users" method="post">
+					<label>First Name:</label>
+					<input type="text" name="first_name"><br>
+					<label>Last Name:</label>
+					<input type="text" name="last_name"><br>
+					<label>Email:</label>
+					<input type="text" name="email"><br>
+					<label>Password:</label>
+					<input type="text" name="password"><br>
+					<label>Password Confirmation:</label>
+					<input type="text" name="confirmation"><br>
+					<input type="submit" value="Register">
+				</form>
+			</div>
+			<div id="login">
+				<h1>Login</h1>
+				<form action="/login" method="post">
+					<label>Email:</label>
+					<input type="text" name="email"><br>
+					<label>Password:</label>
+					<input type="text" name="password"><br>
+					<input type="submit" value="Login">
+				</form>
+			</div>
+			{% with messages = get_flashed_messages() %}
+				{% if messages %}
+					<ul>
+						{% for message in messages %}
+							<li>{{ message }}</li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+			{% endwith %}
+		</div>
+	</body>
+</html>
