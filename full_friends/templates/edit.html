@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Full Friends Edit</title>
+		<style type="text/css">
+			#container{
+				width: 970px;
+				margin: 0px auto;
+				padding: 20px;
+			}
+			#container h1, form{
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+		{% for friend in friends %}
+			<h1>Edit {{ friend[ 'first_name' ] }}</h1>
+			<form action="/friends/{{ friend[ 'id' ] }}" method="post">
+				<label>First Name:</label>
+				<input type="text" name="first_name" value="{{ friend[ 'first_name' ] }}">
+				<label>Last Name:</label>
+				<input type="text" name="last_name" value="{{ friend[ 'last_name' ] }}">
+				<label>Email:</label>
+				<input type="text" name="email" value="{{ friend[ 'email' ] }}">
+				<input type="submit" value="Update Friend">
+			</form>
+		{% endfor %}
+		</div>
+	</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The Wall</title>
+		<style type="text/css">
+			#container{
+				width: 970px;
+				margin: 0px auto;
+				padding: 20px;
+			}
+			#header{
+				border-bottom: 1px solid black;
+			}
+			#header h1{
+				display: inline-block;
+			}
+			#welcome{
+				margin-left: 400px;
+			}
+			a{
+				margin-left: 40px;
+			}
+			#messages{
+				padding: 20px;
+			}
+			textarea{
+				width: 910px;
+				height: 60px;
+			}
+			form{
+				text-align: right;
+			}
+			#comments{
+				padding: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		{% for user in users %}
+		<div id="container">
+			<div id="header">
+				<h1>CodingDojo Wall</h1>
+				<h1 id="welcome">Welcome {{ user[ 'first_name' ] }}</h1>
+				<a href="/logout">Log Out</a>
+			</div>
+			<div id="messages">
+				<h2>Post a message</h2>
+				<form action="/message/{{ user[ 'id' ] }}" method="post">
+		{% endfor %}
+					<textarea name="content"></textarea><br>
+					<input type="submit" value="Post a message">
+				</form>
+				{% for message in messages %}
+				{% for comment in comments %}
+				<h3>{{ message[ 'first_name' ] }} {{ message[ 'last_name' ] }} - {{ message[ 'created_at' ].strftime( '%B %d, %Y' ) }}</h3>
+				<h4>This is a message.<br>{{ message[ 'content' ] }}</h4>
+				<div id="comments">
+					{% if message[ 'id' ] == comment[ 'message_id' ] %}
+					<h3>{{ comment[ 'first_name']}} {{ comment[ 'last_name' ] }} - {{ comment[ 'created_at' ].strftime( '%B %d, %Y') }}</h3>
+					<h4>This is a comment.<br>{{ comment[ 'content' ] }}</h4>
+					<h2>Post a comment</h2>
+					{% endif %}
+					<form action="/comment/{{ message[ 'id' ] }}" method="post">
+						<textarea name="content"></textarea>
+						<input type="submit" value="Post a comment">
+					</form>
+				</div>
+				{% endfor %}
+				{% endfor %}
+			</div>
+		</div>
+	</body>
+</html>
