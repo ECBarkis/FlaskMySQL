@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Semi-RestFul Routes</title>
+		<style type="text/css">
+			#container{
+				width: 970px;
+				margin: 0px auto;
+				padding: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<h1>Add a new user</h1>
+			<form action="/users" method="post">
+				<label>First Name:</label><br>
+				<input type="text" name="first_name"><br>
+				<label>Last Name:</label><br>
+				<input type="text" name="last_name"><br>
+				<label>Email:</label><br>
+				<input type="text" name="email"><br>
+				<label>Password:</label><br>
+				<input type="text" name="password"><br>
+				<label>Password Confirmation:</label><br>
+				<input type="text" name="confirmation"><br>
+				<input type="submit" value="Create User"><br>
+			</form>
+			<a href="/users">Go back</a>
+		</div>
+	</body>
+</html>

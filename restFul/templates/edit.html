@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Semi-RestFul Routes</title>
+		<style type="text/css">
+			#container{
+				width: 970px;
+				margin: 0px auto;
+				padding: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<h1>Edit User {{ users[ 'id' ] }}</h1>
+			<form action="/users/{{ users[ 'id' ] }}" method="post">
+				<label>First Name:</label><br>
+				<input type="text" name="first_name" value="{{ users[ 'first_name' ] }}"><br>
+				<label>Last Name:</label><br>
+				<input type="text" name="last_name" value="{{ users[ 'last_name' ] }}"><br>
+				<label>Email:</label><br>
+				<input type="text" name="email" value="{{ users[ 'email' ] }}"><br>
+				<input type="submit" value="Update">
+			</form>
+			<p>
+				<a href="/users/{{ users[ 'id' ] }}">Show</a>
+				|
+				<a href="/users">Go back</a>
+			</p>
+		</div>
+	</body>
+</html>
