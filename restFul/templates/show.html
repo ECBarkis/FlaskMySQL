@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Semi-RestFul Routes</title>
+		<style type="text/css">
+			#container{
+				width: 970px;
+				margin: 0px auto;
+				padding: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<h1>User {{ users[ 'id' ] }}</h1>
+			<h3>Full Name: {{ users[ 'first_name' ] }} {{ users[ 'last_name' ] }}</h3>
+			<h3>Email: {{ users[ 'email' ] }}</h3>
+			<h3>Created At: {{ users[ 'created_at' ].strftime( '%B %d, %Y') }}</h3>
+			<p>
+				<a href="/users/{{ users[ 'id' ] }}/edit">Edit</a>
+				|
+				<a href="">Delete</a>
+			</p>
+		</div>
+	</body>
+</html>
